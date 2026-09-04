@@ -1,7 +1,30 @@
 .preview-note{color:var(--muted);font-size:12px;line-height:1.6;margin:0 0 20px}
-.track{grid-template-columns:35px 48px 1fr 1fr auto;color:#fff;text-decoration:none}
-.cover-art{width:48px;height:48px;display:grid;place-items:center;background:linear-gradient(135deg,#351728,#ff3f88);color:#160b11}
-.track-arrow{color:var(--pink)}
+.preview-note.status{margin-top:16px;color:var(--blush)}
+.preview-heading h2 em{font:italic 600 inherit 'Playfair Display',serif;color:var(--pink)}
+.track{grid-template-columns:35px 48px 1fr 1fr auto;color:#fff;text-decoration:none;transition:background-color .25s,padding-left .25s}
+.track:hover{background-color:#17121a;padding-left:8px}
+.cover-art{width:48px;height:48px;display:grid;place-items:center;background:linear-gradient(135deg,#351728,#ff3f88);color:#160b11;overflow:hidden;position:relative}
+.cover-art img{width:100%;height:100%;object-fit:cover;animation:fadeIn .6s both}
+.cover-art.loading::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);animation:shimmer 1.2s infinite}
+.track-arrow{color:var(--pink);opacity:0;transform:translateX(-6px);transition:opacity .25s,transform .25s}
+.track:hover .track-arrow{opacity:1;transform:translateX(0)}
 .spin{animation:spin .9s linear infinite}
+.mood-button{animation:rise .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 80ms)}
+.mood-button.selected svg{animation:pop .35s cubic-bezier(.2,.8,.2,1) both}
+.playlist-preview{animation:fadeIn .5s both}
+.playlist-preview .track{animation:rise .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 45ms)}
+.greeting>*{animation:rise .6s cubic-bezier(.2,.8,.2,1) both}
+.greeting h1{animation-delay:.1s}.greeting p:last-child{animation-delay:.2s}
+.feeling-row,.action-row{animation:fadeIn .7s both;animation-delay:.45s}
+.love-note{margin-top:34px;border-top:1px solid var(--line);padding-top:22px;display:grid;gap:10px}
+.love-note label{font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--blush);display:flex;align-items:center;gap:7px}
+.love-note textarea{background:#151216;border:1px solid var(--line);color:#fff;min-height:74px;padding:14px;resize:vertical;outline:none;transition:border-color .25s,box-shadow .25s}
+.love-note textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,63,136,.15)}
+.love-note small{font:10px 'DM Mono',monospace;color:var(--muted);text-align:right}
+.confirm-button:disabled{opacity:.6;cursor:wait;transform:none}
 @keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
 @media(max-width:800px){.track{grid-template-columns:25px 43px 1fr auto}.cover-art{width:43px;height:43px}.track .album-name{display:none}}
