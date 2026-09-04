@@ -2,4 +2,6 @@
 .track{grid-template-columns:35px 48px 1fr 1fr auto;color:#fff;text-decoration:none}
 .cover-art{width:48px;height:48px;display:grid;place-items:center;background:linear-gradient(135deg,#351728,#ff3f88);color:#160b11}
 .track-arrow{color:var(--pink)}
+.spin{animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:800px){.track{grid-template-columns:25px 43px 1fr auto}.cover-art{width:43px;height:43px}.track .album-name{display:none}}
