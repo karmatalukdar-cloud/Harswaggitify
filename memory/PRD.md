@@ -23,6 +23,14 @@ Build a Spotify-inspired black and pink webpage for Harshita that asks her mood,
 - Added mood selection, free-text feeling, surprise mode, and 20-track preview.
 - Added PKCE authorization and automatic private playlist creation with all matched tracks.
 
+## Implemented — 2026-06 (GitHub-ready cleanup)
+- Root README with Spotify app setup, local run and env var docs.
+- `.env` now git-ignored; `frontend/.env.example` and `backend/.env.example` added.
+- Redirect URI falls back to `window.location.origin + "/"` so the app runs on any host.
+- Removed misplaced eslint-disable comment; `CI=true yarn build` compiles with zero warnings.
+- Removed stray `code_export.zip`, root `yarn.lock`, `.ruff_cache`.
+- Known: preview URL still shows platform "Preview Unavailable" page although localhost:3000 serves the app (infra issue, not code).
+
 ## Prioritized backlog
 - P0: Verify Spotify PKCE callback and playlist creation with the registered Client ID.
 - P1: Add persistent playlist history and recent creations.

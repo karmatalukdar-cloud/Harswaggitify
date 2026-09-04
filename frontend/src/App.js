@@ -4,7 +4,7 @@ import "@/App.css";
 import "@/AppOverrides.css";
 
 const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-const REDIRECT_URI = process.env.REACT_APP_SPOTIFY_REDIRECT_URI;
+const REDIRECT_URI = process.env.REACT_APP_SPOTIFY_REDIRECT_URI || `${window.location.origin}/`;
 const SCOPES = "playlist-modify-private";
 const moods = [
   { id: "soft", label: "Soft & floaty", note: "for the days that feel like satin", query: "Daniel Caesar The 1975 soft R&B" },
@@ -31,8 +31,6 @@ export default function App() {
   const [message, setMessage] = useState("");
   const selectedMood = useMemo(() => moods.find((item) => item.id === mood), [mood]);
 
-  // The callback is intentionally registered once for the OAuth redirect.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get("code");
     if (!code) return;
